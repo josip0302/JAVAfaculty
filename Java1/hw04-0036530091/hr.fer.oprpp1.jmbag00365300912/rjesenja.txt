@@ -1,0 +1,118 @@
+1.zadatak
+klasa StudentDB.java
+dodajem listu stringova showing u liniji 24
+
+List<String> showing=new ArrayList<>();
+
+provjeravam postoji li showing u ulaznom stringu u liniji 29 i onda ako postoji i iza njega nema ništa ili ako string ne sadrži format varijable 
+koji tražimo bacam iznimku koja se hvata poslije, a ako je sve uredu
+uklanjam showing i sve iza njega iz varijable query da ne ometamo temeljnu funkciju programa i dodajem sve elemente iza stringa showing u listu 
+stringova showing.
+
+if(query.contains("showing")){
+                    String[] s=query.split("showing");
+                    if(s.length==1){
+                    throw new IOException(" SHOWING bez elemenata iza");
+                    } else if (s[1].trim().equals("")) {
+                        throw new IOException(" SHOWING bez elemenata iza");
+                    }else if(!s[1].contains("lastName")&&!s[1].contains("firstName")&&!s[1].contains("jmbag")&&!s[1].contains("finalGrade")){
+                        throw new IOException(" SHOWING s krivim elementima iza");
+                    }
+                    query=query.split("showing")[0];
+                    if(query.length()==0)continue;
+                    for(String s1:s[1].split(",")) {
+                        showing.add(s1.trim());
+                    }
+                }
+
+u liniji 57 pozivam funkciju format klase RecordFormatter kojoj sam kao novi ulazni parametar dodao listu stringova showing
+
+List<String> output = RecordFormatter.format(records,showing);
+
+Klasa RecordFormatter.java metoda format u kojoj sam dodao parametar listu stringova showing iz koje se onda provjerava koje dijelove klase studenRecord 
+želi ispisati, dakle ako je lista prazna ispisuju se svi, a ako nije u rezulatat se upisuju samo one varijable čija su imena u listi showing
+
+public static List<String> format(List<StudentRecord> recordList,List<String> showing){
+        boolean lastname=true;
+        boolean firstname=true;
+        boolean jmbag=true;
+        boolean grade=true;
+        if(showing.size()!=0){
+            if(!showing.contains("firstName")){
+                firstname=false;
+            }
+            if(!showing.contains("lastName")){
+                lastname=false;
+            }
+            if(!showing.contains("jmbag")){
+                jmbag=false;
+            }
+            if(!showing.contains("finalGrade")){
+                grade=false;
+            }
+        }
+
+        int firstNameLength=0;
+        int lastNameLength=0;
+        List<String> result=new ArrayList<>();
+        if(recordList.size()==0) return result;
+        for(StudentRecord record:recordList){
+            if(record.getFirstName().length()>firstNameLength){
+                firstNameLength=record.getFirstName().length();
+            }
+            if(record.getLastName().length()>lastNameLength){
+                lastNameLength=record.getLastName().length();
+            }
+        }
+        StringBuilder builder=new StringBuilder();
+        if(jmbag){
+        builder.append('+');
+        for(int i=0;i<12;i++){
+            builder.append('=');
+        }}
+        if(lastname){
+        builder.append('+');
+        for(int i=0;i<lastNameLength+2;i++){
+            builder.append('=');
+        }}
+        if(firstname){
+        builder.append('+');
+        for(int i=0;i<firstNameLength+2;i++){
+            builder.append('=');
+        }}
+        if(grade) {
+            builder.append("+===+");
+        }else {
+            builder.append("+");
+        }
+        String startend=builder.toString();
+        result.add(builder.toString());
+        for(StudentRecord record:recordList) {
+            builder=new StringBuilder();
+            if(jmbag) {
+                builder.append("| " + record.getJmbag() + " ");
+            }
+            if(lastname){
+            builder.append("| "+record.getLastName()+" ");
+            for(int i=0;i<(lastNameLength-record.getLastName().length());i++){
+                builder.append(" ");
+            }}
+            if(firstname){
+            builder.append("| "+record.getFirstName()+" ");
+            for(int i=0;i<(firstNameLength-record.getFirstName().length());i++){
+                builder.append(" ");
+            }}
+            if(grade) {
+                builder.append("| " + record.getFinalGrade() + " |");
+            }else {
+                builder.append("|");
+            }
+
+            result.add(builder.toString());
+        }
+        result.add(startend);
+       return result;
+
+    }
+2. zadatak nisam rješio barchart u zadaći pa neću ni pokušavati ništa ovdje rješavati.
+

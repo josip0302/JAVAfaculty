@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Maven: javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.1/javax.servlet.jsp.jstl-api-1.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/oprpp2.jmbag0000000000/src/main/webapp/lib/jcommon-1.0.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/oprpp2.jmbag0000000000/src/main/webapp/lib/jfreechart-1.0.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/oprpp2.jmbag0000000000/src/main/webapp/lib/poi-3.16.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.1/javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.1/javax.servlet.jsp.jstl-api-1.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

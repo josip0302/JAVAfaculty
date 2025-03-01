@@ -1,0 +1,146 @@
+1.
+Prvo sam dodao jedan redaku bazu u ServletContextListener - u Inicijalizacija, u koji sam pohranio broj nula,kao i za broj like-ova
+Ovo sam promjenio kod stvaranja tablice(linija 98)
+	 sql = "CREATE TABLE POOLOPTIONS "+
+						"   (id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,  "+
+						"  optionTitle VARCHAR(100) NOT NULL,"+
+						"    optionLink VARCHAR(150) NOT NULL, "+
+						"   pollID BIGINT,    likeCount BIGINT, disCount BIGINT, "+
+						"   FOREIGN KEY (pollID) REFERENCES POOLS(ID))";
+				 p = con.prepareStatement(sql);
+
+a kod popunjavanja sam također dodao novi atribut(linija 130) i dodao dodavanje novog atributa
+	pst = con.prepareStatement("INSERT INTO POOLOPTIONS ( OPTIONTITLE, OPTIONLINK,POLLID,LIKECOUNT,DISCOUNT) values (?,?,?,?,?)",
+							Statement.RETURN_GENERATED_KEYS);
+					for(String a:list) {
+
+						String[] A=a.split("##");
+						System.out.println(A[1]);
+						pst.setString(1, A[1]);
+						pst.setString(2, A[2]);
+						pst.setInt(3, Integer.parseInt(A[3]));
+						pst.setInt(4, Integer.parseInt(A[4]));
+						pst.setInt(5, Integer.parseInt(A[5]));
+						int rows = pst.executeUpdate();
+
+
+
+Onda sam u jsp-u glasanjeIndex dodao mogućnost da se klikne like i dislike, like šalje parametar like=id a dislike šalje parametar dis=id:
+(linija 17)
+<ol>
+    <c:forEach var="u" items="${mapaBendova}">
+        <li>${u.value} <a href="glasanje-glasaj?like=${u.key}">Like</a> <a href="glasanje-glasaj?dis=${u.key}">Dislike</a> </li>
+    </c:forEach>
+
+</ol>
+
+
+onda sam u klasi GlasanjeGlasajServlet dodao funkcionalnost u kojoj ona raspoznaje jeli stisnut like ili dislike ovisno o parametru koji je postavljen(linija 28):
+ if(a==null){
+            a=request.getParameter("dis");
+            like=false;
+        }else {
+            like=true;
+        }
+        Connection con = null;
+        try {
+            con = cpds.getConnection();
+            String sql = "SELECT * FROM  POOLOPTIONS WHERE ID="+a;
+            PreparedStatement p = con.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ResultSet s=  p.executeQuery();
+            int colindex;
+            if(like){
+                colindex=5;
+            }else {
+                colindex=6;
+            }
+            if(s.next()) {
+             int b = s.getInt(colindex) + 1;
+
+            s.updateInt(colindex,b);
+            s.updateRow();
+
+
+
+Onda sam u servletu GlasanjeRezultatiServlet pohranio još i dislikeove i razlike u mape koje sam pohranio kao atribute:
+(linija 27)
+ Map<String,Integer> mapdis= new TreeMap<>();
+ Map<String,Integer> mapraz= new TreeMap<>();
+
+(linija 41)
+  mapdis.put(s.getString(2),s.getInt(6));
+  mapraz.put(s.getString(2),s.getInt(5)-s.getInt(6));
+
+(linija 81)
+request.setAttribute("dis",mapdis);
+request.setAttribute("raz",mapraz);
+
+Onda sam u jsp  datoteci glasanjeRez.jsp omogćio prikaz brojevima iz te dvije mape
+(linija 20)
+<table border="1" cellspacing="0" class="rez">
+    <thead><tr><th>Bend</th><th>Like</th><th>Dislike</th><th>razlika</th></tr></thead>
+    <tbody>
+    <c:forEach var="u" items="${rez}">
+        <tr><td>${u.key}</td><td>${u.value}</td><td>${dis.get(u.key)}</td><td>${raz.get(u.key)}</td></tr>
+    </c:forEach>
+
+    </tbody>
+</table>
+
+i to bi bilo to od ovog zadatka.
+
+
+2.
+Nisam završio 5.zadaću jer mi nije radio persistance, ali ću vam napisati svoju generalnu ideju,prvo sam dodao klasu blogMessage koja je 
+entity i ima argumente id,message i autor:
+@Entity
+@Table(name="blog_message")
+public class BlogMessage {
+    private Long id;
+    private String autorName;
+    private String message;
+
+    @Id
+    @GeneratedValue
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Column(length=4096,nullable=false)
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    @Column(length=100,nullable=false)
+    public String getAutorName() {
+        return autorName;
+    }
+
+    public void setAutorName(String name) {
+        this.autorName = name;
+    }
+    @Column(length=100,nullable=false)
+    public String getForUser() {
+        return forUser;
+    }
+
+    public void setForUser(String name) {
+        this.forUser = name;
+    }
+}
+
+Sljedeći korak bi bio omogućiti format koji bi nas vodio u servlet u kojem bi se stvorila nova poruka, taj format bi se prikazivao uvijek
+kad je user ulogiran, dakle kad u sesijskim varijblama postoji pohranjen atribut "current.user.id".Uvijek kad je korisnik ulogiran uvijek
+bi se prikazivala lista u kojoj bi bile pohranjeni svi objekti tipa BlogMessage, koje bi se pohranjivale u servletu koji nas dovodi do te stranice.
+
+
+
+
+

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1"
+         metadata-complete="true">
+
+    <display-name>Moja prva aplikacija</display-name>
+    <description>
+        Prva aplikacija
+    </description>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <listener>
+        <listener-class>Inicijalizacija</listener-class>
+    </listener>
+
+    <servlet>
+        <description>setcolor Functions</description>
+        <display-name>setcolor</display-name>
+        <servlet-name>setcolor</servlet-name>
+        <servlet-class>setcolor</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>setcolor</servlet-name>
+        <url-pattern>/setcolor</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>trigonometric Functions</description>
+        <display-name>trigonometric</display-name>
+        <servlet-name>trigonometric</servlet-name>
+        <servlet-class>trigonometric</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>trigonometric</servlet-name>
+        <url-pattern>/trigonometric</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>reportImage Functions</description>
+        <display-name>reportImage</display-name>
+        <servlet-name>reportImage</servlet-name>
+        <servlet-class>reportImage</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>reportImage</servlet-name>
+        <url-pattern>/reportImage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description>powers Functions</description>
+        <display-name>powers</display-name>
+        <servlet-name>powers</servlet-name>
+        <servlet-class>powers</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>powers</servlet-name>
+        <url-pattern>/powers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>glasanje-glasaj Functions</description>
+        <display-name>glasanje-glasaj</display-name>
+        <servlet-name>GlasanjeGlasajServlet</servlet-name>
+        <servlet-class>GlasanjeGlasajServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GlasanjeGlasajServlet</servlet-name>
+        <url-pattern>/glasanje-glasaj</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>glasanje Functions</description>
+        <display-name>glasanje</display-name>
+        <servlet-name>glasanjeServlet</servlet-name>
+        <servlet-class>glasanjeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>glasanjeServlet</servlet-name>
+        <url-pattern>/glasanje</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>glasanje-grafika Functions</description>
+        <display-name>glasanje-grafika</display-name>
+        <servlet-name>glasanje-grafika</servlet-name>
+        <servlet-class>glasanjegrafika</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>glasanje-grafika</servlet-name>
+        <url-pattern>/glasanje-grafika</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>glasanje-rezultati Functions</description>
+        <display-name>glasanje-rezultati</display-name>
+        <servlet-name>GlasanjeRezultatiServlet</servlet-name>
+        <servlet-class>GlasanjeRezultatiServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GlasanjeRezultatiServlet</servlet-name>
+        <url-pattern>/glasanje-rezultati</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>glasanje-xls Functions</description>
+        <display-name>glasanje-xls</display-name>
+        <servlet-name>glasanje-xls</servlet-name>
+        <servlet-class>glasanjexls</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>glasanje-xls</servlet-name>
+        <url-pattern>/glasanje-xls</url-pattern>
+    </servlet-mapping>
+</web-app>

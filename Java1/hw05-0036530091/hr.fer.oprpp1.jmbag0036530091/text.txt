@@ -1,0 +1,3 @@
+Finally, the hexdump command expects a single argument: file name, and produces hex-output as illustrated
+below. On the right side of the image only a standard subset of characters is shown; for all other characters a
+'.' is printed instead (i.e. replace all bytes whose value is less than 32 or greater than 127 with '.').

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1"
+  	 metadata-complete="false">
+
+  <display-name>voting-app</display-name>
+  <description>
+      voting-app
+  </description>
+
+    <servlet>
+        <description>setcolor Functions</description>
+        <display-name>setcolor</display-name>
+        <servlet-name>setcolor</servlet-name>
+        <servlet-class>oprpp2.jmbag0036530091.odprije.setcolor</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>setcolor</servlet-name>
+        <url-pattern>/setcolor</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>trigonometric Functions</description>
+        <display-name>trigonometric</display-name>
+        <servlet-name>trigonometric</servlet-name>
+        <servlet-class>oprpp2.jmbag0036530091.odprije.trigonometric</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>trigonometric</servlet-name>
+        <url-pattern>/trigonometric</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>reportImage Functions</description>
+        <display-name>reportImage</display-name>
+        <servlet-name>reportImage</servlet-name>
+        <servlet-class>oprpp2.jmbag0036530091.odprije.reportImage</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>reportImage</servlet-name>
+        <url-pattern>/reportImage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description>powers Functions</description>
+        <display-name>powers</display-name>
+        <servlet-name>powers</servlet-name>
+        <servlet-class>oprpp2.jmbag0036530091.odprije.powers</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>powers</servlet-name>
+        <url-pattern>/powers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>glasanje-glasaj Functions</description>
+        <display-name>glasanje-glasaj</display-name>
+        <servlet-name>GlasanjeGlasajServlet</servlet-name>
+        <servlet-class>oprpp2.jmbag0036530091.odprije.GlasanjeGlasajServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GlasanjeGlasajServlet</servlet-name>
+        <url-pattern>/servleti/glasanje-glasaj</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <description>glasanje-grafika Functions</description>
+        <display-name>glasanje-grafika</display-name>
+        <servlet-name>glasanje-grafika</servlet-name>
+        <servlet-class>oprpp2.jmbag0036530091.odprije.glasanjegrafika</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>glasanje-grafika</servlet-name>
+        <url-pattern>/glasanje-grafika</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>glasanje-rezultati Functions</description>
+        <display-name>glasanje-rezultati</display-name>
+        <servlet-name>GlasanjeRezultatiServlet</servlet-name>
+        <servlet-class>oprpp2.jmbag0036530091.odprije.GlasanjeRezultatiServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GlasanjeRezultatiServlet</servlet-name>
+        <url-pattern>/glasanje-rezultati</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>glasanje-xls Functions</description>
+        <display-name>glasanje-xls</display-name>
+        <servlet-name>glasanje-xls</servlet-name>
+        <servlet-class>oprpp2.jmbag0036530091.odprije.glasanjexls</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>glasanje-xls</servlet-name>
+        <url-pattern>/glasanje-xls</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+
+

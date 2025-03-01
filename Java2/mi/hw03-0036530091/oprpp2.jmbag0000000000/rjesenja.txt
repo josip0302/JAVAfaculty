@@ -1,0 +1,88 @@
+U jsp file-u index sam dodao liniju koda koja je link na servlet kojim dođemo do stranice vijeme.jsp te se
+tada nasumično bira pozadinska slika za prikaz:
+
+<a href="<%=request.getContextPath()%>/vrijeme">vrijeme</a>
+
+Stvorio sam novi servlet vrijeme ovo je servlet u kojem se nasumično bira slika za prikaz ako ne postoji parametar number,
+ako on postoji onda se postavlja slika koju on odredi:
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.util.Random;
+
+@WebServlet(name = "vrijeme", value = "/vrijeme")
+public class vrijeme extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String url="https://www.fer.unizg.hr/_news/icons/a1580ff3a85ebd78506b23ae43a064235410_icon.jpg";
+        String url2="https://www.fer.unizg.hr/lib/generic_theme/images/FER_logo_1.svg";
+        Random rand = new Random();
+        int a= rand.nextInt(2);
+        if(request.getParameter("number")!=null){
+            a= Integer.parseInt(request.getParameter("number"));
+        }
+
+        if(a==0){
+            request.setAttribute("slika",url);
+        }else {
+            request.setAttribute("slika",url2);
+        }
+        request.getRequestDispatcher("/WEB-INF/pages/vrijeme.jsp").forward(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+}
+
+Stvorio sam i jsp file vrijeme.jsp u kojem se prikazuje vrijeme u trenutku otvaranja file-a te nasumična ili odabrana pozdinska
+slika i iz kojeg se može otići u jsp file odabirSlike u kojem se može ponovo birati slika:
+
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Calendar" %><%--
+  Created by IntelliJ IDEA.
+  User: Josip
+  Date: 17.4.2023.
+  Time: 18:44
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Vrijeme</title>
+</head>
+
+<body style="background-image:url(${slika})">
+<p><%=new SimpleDateFormat("dd.MM.yyyy.  HH:mm:ss").format(Calendar.getInstance().getTime())%></p>
+
+<a href="odabirSlike.jsp">  Odabir slike</a>
+</body>
+</html>
+
+Također sam stvorio novi jsp file odabirSlike.jsp u kojem preko linka povezanog na svaku sliku postavljamo parameter number
+i pozivamo servlet vrijeme koji ce postaviti odabranu sliku u vrijeme.jsp:
+
+<%--
+  Created by IntelliJ IDEA.
+  User: Josip
+  Date: 17.4.2023.
+  Time: 19:08
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Odabir Slike</title>
+</head>
+<body>
+<h1>Odaberite sliku</h1>
+<a href="<%=request.getContextPath()%>/vrijeme?number=0"><img src="https://www.fer.unizg.hr/_news/icons/a1580ff3a85ebd78506b23ae43a064235410_icon.jpg" width="400"height="400"/>
+</a>
+
+<a href="<%=request.getContextPath()%>/vrijeme?number=1"><img src="https://www.fer.unizg.hr/lib/generic_theme/images/FER_logo_1.svg" width="400"height="400"/>
+</a>
+</body>
+</html>

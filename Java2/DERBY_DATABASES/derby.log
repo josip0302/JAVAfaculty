@@ -1,0 +1,102 @@
+Mon Jun 12 01:49:29 CEST 2023 : Apache Derby Network Server - 10.16.1.1 - (1901046) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Mon Jun 12 01:50:09 CEST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0188-acdd-618b-0000599ca5aa 
+on database directory C:\Users\Josip\IdeaProjects\Java2\DERBY_DATABASES\votingDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
+Loaded from file:/C:/Users/Josip/db-derby-10.16.1.1-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=19.0.2+7-44
+user.dir=C:\Users\Josip\IdeaProjects\Java2\derby-skripte
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Josip\IdeaProjects\Java2\DERBY_DATABASES
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Jun 12 12:39:30 CEST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance 7d03414a-0188-acdd-618b-0000599ca5aa 
+on database directory C:\Users\Josip\IdeaProjects\Java2\DERBY_DATABASES\blogBaza with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
+Loaded from file:/C:/Users/Josip/db-derby-10.16.1.1-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=19.0.2+7-44
+user.dir=C:\Users\Josip\IdeaProjects\Java2\derby-skripte
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Josip\IdeaProjects\Java2\DERBY_DATABASES
+Database Class Loader started - derby.database.classpath=''
+Mon Jun 12 19:19:31 CEST 2023 Thread[#32,DRDAConnThread_6,5,main] (XID = 5259), (SESSIONID = 48), (DATABASE = blogBaza), (DRDAID = {118}), Cleanup action starting
+java.sql.SQLNonTransientConnectionException: Connection authentication failure occurred.  Reason: Invalid authentication..
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:81)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.checkUserCredentials(EmbedConnection.java:1315)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:445)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+Caused by: ERROR 08004: Connection authentication failure occurred.  Reason: Invalid authentication..
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	... 17 more
+============= begin nested exception, level (1) ===========
+ERROR 08004: Connection authentication failure occurred.  Reason: Invalid authentication..
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.checkUserCredentials(EmbedConnection.java:1315)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:445)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+============= end nested exception, level (1) ===========
+Cleanup action completed
+Mon Jun 12 19:19:31 CEST 2023 Thread[#32,DRDAConnThread_6,5,main] (DATABASE = blogBaza), (DRDAID = {118}), Connection authentication failure occurred.  Reason: Invalid authentication..
+----------------------------------------------------------------
+Mon Jun 12 19:45:28 CEST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance 80800401-0188-acdd-618b-0000599ca5aa 
+on database directory C:\Users\Josip\IdeaProjects\Java2\DERBY_DATABASES\credentialsDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
+Loaded from file:/C:/Users/Josip/db-derby-10.16.1.1-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=19.0.2+7-44
+user.dir=C:\Users\Josip\IdeaProjects\Java2\derby-skripte
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Josip\IdeaProjects\Java2\DERBY_DATABASES
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Jun 12 19:45:28 CEST 2023: Shutting down Derby engine
+----------------------------------------------------------------
+Mon Jun 12 19:45:28 CEST 2023:
+Shutting down instance 80800401-0188-acdd-618b-0000599ca5aa on database directory C:\Users\Josip\IdeaProjects\Java2\DERBY_DATABASES\credentialsDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
+----------------------------------------------------------------
+Mon Jun 12 19:45:28 CEST 2023:
+Shutting down instance 7d03414a-0188-acdd-618b-0000599ca5aa on database directory C:\Users\Josip\IdeaProjects\Java2\DERBY_DATABASES\blogBaza with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
+----------------------------------------------------------------
+Mon Jun 12 19:45:28 CEST 2023:
+Shutting down instance a816c00e-0188-acdd-618b-0000599ca5aa on database directory C:\Users\Josip\IdeaProjects\Java2\DERBY_DATABASES\votingDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
+----------------------------------------------------------------
